@@ -1,15 +1,11 @@
 # Valid passowords are
-# - 8 or more characters
-# - include at least one of these characters: !, @, $, %, &
+ # - 8 or more characters
+ # - include at least one of these characters: !, @, $, %, &
 
-def valid?(password)
-    passcheck = password
-    if (passcheck.length > 7)
-        if passcheck.include?('!') || passcheck.include?('@') || passcheck.include?('$') || passcheck.include?('%') || passcheck.include?('&')
-            return true
-        else
-            return false
-        end
+ def valid?(password)
+    specialchar = /[!@$%&]/
+    if password =~ specialchar && password.length > 7
+        return true
     else
         return false
     end
